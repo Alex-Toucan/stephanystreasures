@@ -1,16 +1,14 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home" description="Welcome to Stephanie's Treasures, your one-stop shop for unique and handcrafted items." keywords="handcrafted, unique items, gifts, Stephanie's Treasures" author="Stephanie's Treasures" color="#ff69b4">
+	<div class="container">
+		<Navbar />
+		<main id="index">
+			<h1>Welcome to Stephanie's Treasures</h1>
+			<p>Your one-stop shop for unique and handcrafted items.</p>
+		</main>
+	</div>
+</Layout>

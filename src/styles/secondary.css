@@ -1,0 +1,5 @@
+:root,
+[data-bs-theme=light] {
+  --bs-body-bg: #260241;
+  --bs-body-color: #ffffff;
+}
