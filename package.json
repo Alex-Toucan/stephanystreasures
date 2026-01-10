@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "astro": "^5.16.8",
     "@types/jquery": "^3.5.33",
-    "astro": "^5.16.7",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "jquery": "^3.7.1",
