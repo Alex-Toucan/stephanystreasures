@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Payment Canceled" 
+  description="Your payment was canceled."
+  keywords="cancel, payment, checkout"
+  author="Stephanie's Treasures"
+  color="#ff69b4"
+>
+  <main id="cancel-page">
+    <div class="text-center mb-4 rounded-2 hero shadow">
+      <div class="hero-back rounded-2 py-5">
+        <i class="bi bi-x-circle-fill text-danger fs-1"></i>
+        <h1 class="title fw-light lh-1 mt-3">Payment Canceled</h1>
+        <p class="fs-5 m-3 mb-0 text-body-secondary">
+          Your payment was not completed.
+        </p>
+      </div>
+    </div>
+
+    <div class="container text-center my-5">
+      <a href="/" class="btn btn-primary btn-lg">
+        Return Home
+        <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+
+      <hr class="mx-2 mt-5">
+
+      <p class="figure-caption">
+        You may close this page or return to the shop at any time.
+      </p>
+    </div>
+  </main>
+</Layout>

@@ -1,17 +1,37 @@
-<nav class="navbar navbar-expand-lg fixed-top shadow rounded-2 container my-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">logo goes here</a>
+<div class="fixed-top my-4 px-mmd-4 px-0 container-md">
+  <nav class="navbar shadow rounded-2">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">logo goes here</a>
 
-    <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="ms-auto">
-        <a href="#" class="link-hero"><i class="bi bi-cart-fill"></i></a>
+        <div class="dropdown">
+          <a
+            class="link-hero position-relative dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-cart-fill fs-4"></i>
+            <span
+              id="cart-count"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+            >
+              0
+            </span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
+            <div id="cart-dropdown-content">
+              <p class="text-center text-muted mb-0">Cart is empty</p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button id="dropdown-checkout" class="btn btn-success w-100">
+              Checkout
+            </button>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>

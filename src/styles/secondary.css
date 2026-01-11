@@ -48,3 +48,27 @@ body,html {
   font-family: var(--font-title);
   font-size: calc(3rem + 4.5vw);
 }
+
+@media (max-width: 767.98px) {
+  .mx-mmd-4 {
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+  }
+  .px-mmd-4 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+.card-hover .hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: inherit;
+}
+
+.card-hover:hover .hover-overlay {
+  opacity: 1;
+}

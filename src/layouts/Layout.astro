@@ -58,8 +58,8 @@ const { title, heroid, icon, color, description, keywords, author, additionalCon
       <meta name="title" content={title}>
       <meta name="description" content={description}>
       <meta name="twitter:card" content="summary">
-      <meta name="twitter:site" content="@ATProductsLLC">
-      <meta name="twitter:creator" content="@ATProductsLLC">
+      <meta name="twitter:site" content="@StephanysTreasures">
+      <meta name="twitter:creator" content="@StephanysTreasures">
       <meta name="twitter:title" content={title}>
       <meta name="twitter:description" content={description}>
       {keywords && (
@@ -70,7 +70,7 @@ const { title, heroid, icon, color, description, keywords, author, additionalCon
       )}
       <meta property="og:title" content={title}>
       <meta property="og:description" content={description}>
-      <meta property="og:site_name" content="AT Products LLC">
+      <meta property="og:site_name" content="Stephany's Treasures">
       {color ? (
         <meta name="theme-color" content={color}>
       ) : (
@@ -80,9 +80,9 @@ const { title, heroid, icon, color, description, keywords, author, additionalCon
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <Fragment set:html={additionalContent} />
   </head>
-  <body class="fixedtopnavimage mx-md-4 mx-lg-5">
+  <body class="fixedtopnavimage mx-mmd-4 mx-lg-5">
     <Fragment>  
-      <div class="container pe-0 ps-0">
+      <div class="container px-0">
         <Navbar />
         <slot/>
         <Footer />
@@ -92,6 +92,8 @@ const { title, heroid, icon, color, description, keywords, author, additionalCon
       <script src={bootstrap}></script>
       <script src={jquery}></script>
       <script src={jqueryui}></script>
+
+      <script is:inline src="/scripts/cart.js" type="module"></script>
     </Fragment>
   </body>
 </html>

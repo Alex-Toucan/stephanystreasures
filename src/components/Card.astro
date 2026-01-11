@@ -1,0 +1,43 @@
+---
+const { product } = Astro.props;
+---
+
+<div class="card h-100 shadow-sm position-relative card-hover">
+  <a href={`/products/${product.id}`} class="text-decoration-none text-body">
+    <div class="position-relative">
+
+      <!-- Product Image -->
+      <img 
+        src={product.image || "/media/placeholder.png"} 
+        alt={product.name}
+        class="card-img-top"
+        style="height: 30vh; object-fit: cover;"
+      />
+
+      <!-- Sold Out Badge -->
+      {product.soldOut && (
+        <span 
+          class="badge bg-danger position-absolute"
+          style="bottom: 8px; right: 8px;"
+        >
+          Sold Out
+        </span>
+      )}
+
+      <!-- Hover Overlay -->
+      <div class="hover-overlay d-flex justify-content-center align-items-center">
+        <span class="text-white fw-semibold">View Item</span>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{product.name}</h5>
+
+      {product.type !== "donation" && (
+        <p class="card-text fw-semibold">
+          ${(product.price / 100).toFixed(2)}
+        </p>
+      )}
+    </div>
+  </a>
+</div>

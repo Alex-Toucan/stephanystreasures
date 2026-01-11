@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Load JSON product data at build/SSR time
+import products from '../../../public/data/products.json';
+
+const { id } = Astro.params;
+const product = products.find((p) => p.id === id);
+
+if (!product) {
+  throw new Error(`Product not found: ${id}`);
+}
+---
+
+<Layout
+  title={product.name}
+  description={`Purchase ${product.name} securely via Stripe.`}
+  keywords={`${product.name}, Stephany's Treasures, checkout`}
+  author="Stephany's Treasures"
+  color="#0d6efd"
+  icon="iconembed.png"
+  heroid={product.id}
+>
+  <div class="container my-5">
+    <div class="d-flex flex-column flex-md-row align-items-center gap-4">
+
+      <!-- Product Image -->
+      <div class="flex-shrink-0 position-relative">
+        <img 
+          src={product.image || "/media/placeholder.png"} 
+          alt={product.name}
+          class="rounded shadow"
+          style="min-width: 280px; max-width:280px; width: 30vw; height: auto; object-fit: cover;"
+        />
+
+        {product.soldOut && (
+          <span 
+            class="badge bg-danger position-absolute"
+            style="bottom: 8px; right: 8px; font-size: 0.9rem;"
+          >
+            Sold Out
+          </span>
+        )}
+      </div>
+
+      <!-- Product Text + Buttons -->
+      <div class="text-center text-md-start">
+        <h1 class="display-4 fw-bold">{product.name}</h1>
+
+        {product.type !== "donation" && (
+          <p class="fs-3">${(product.price / 100).toFixed(2)}</p>
+        )}
+        <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-md-start mt-4">
+          <!-- Add to Cart -->
+          <button
+            class="btn btn-primary btn-lg"
+            onclick={`addToCart('${product.id}', 1)`}
+          >
+            <i class="bi bi-cart-plus me-2"></i> Add to Cart
+          </button>
+
+          <!-- Instant Checkout -->
+          <button
+            class="btn btn-success btn-lg"
+            onclick={`instantCheckout('${product.id}')`}
+          >
+            <i class="bi bi-lightning-fill me-2"></i> Buy Now
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load cart.js from public (browser only) -->
+  <script type="module" src="/scripts/cart.js"></script>
+</Layout>

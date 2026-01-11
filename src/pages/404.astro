@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Page Not Found" 
+  description="The page you are looking for does not exist."
+  keywords="404, not found, error"
+  author="Stephanie's Treasures"
+  color="#ff69b4"
+>
+  <main id="not-found">
+    <div class="text-center mb-4 rounded-2 hero shadow">
+      <div class="hero-back rounded-2 py-5">
+        <h1 class="title fw-light lh-1">404</h1>
+        <p class="fs-4 m-3 mb-0 text-body-secondary">This page wandered off...</p>
+      </div>
+    </div>
+
+    <div class="container text-center my-5">
+      <p class="fs-5 text-muted mb-4">
+        We couldn’t find the page you were looking for.  
+        It might have been moved, renamed, or never existed.
+      </p>
+
+      <a href="/" class="btn btn-primary btn-lg">
+        Return Home
+      </a>
+    </div>
+  </main>
+</Layout>
