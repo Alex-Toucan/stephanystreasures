@@ -5,7 +5,8 @@
     "price": 2299,
     "type": "one-time",
     "image": "/images/product1.jpg",
-    "soldOut": true
+    "soldOut": true,
+    "category": "Home Decor"
   },
   {
     "id": "dish-soap-bar-bergamot-tangerine",
@@ -13,7 +14,8 @@
     "price": 800,
     "type": "one-time",
     "image": "/images/product2.jpg",
-    "soldOut": true
+    "soldOut": true,
+    "category": "Home Decor"
   },
   {
     "id": "dish-soap-bar-lemon-clean",
@@ -21,7 +23,8 @@
     "price": 800,
     "type": "one-time",
     "image": "/images/product3.jpg",
-    "soldOut": true
+    "soldOut": true,
+    "category": "Home Decor"
   },
   {
     "id": "dish-soap-bar-peppermint-eucalyptus",
@@ -29,7 +32,8 @@
     "price": 800,
     "type": "one-time",
     "image": "/images/product4.jpg",
-    "soldOut": true
+    "soldOut": true,
+    "category": "Home Decor"
   },
   {
     "id": "double-green-cabochon-wire-wrapped-necklace",
@@ -37,7 +41,8 @@
     "price": 2000,
     "type": "one-time",
     "image": "/images/product5.jpg",
-    "soldOut": true
+    "soldOut": true,
+    "category": "Jewelry"
   },
   {
     "id": "lotion-candle-love-spell",
@@ -45,7 +50,8 @@
     "price": 1200,
     "type": "one-time",
     "image": "/images/product6.jpg",
-    "soldOut": true
+    "soldOut": true,
+    "category": "Home Decor"
   },
   {
     "id": "magnesium-spray-emert-farms",
@@ -53,7 +59,8 @@
     "price": 950,
     "type": "one-time",
     "image": "/images/product7.jpg",
-    "soldOut": false
+    "soldOut": false,
+    "category": "Home Decor"
   },
   {
     "id": "wire-wrapped-pineapple-stone-necklace",
@@ -61,6 +68,7 @@
     "price": 2500,
     "type": "one-time",
     "image": "/images/product8.jpg",
-    "soldOut": false
+    "soldOut": false,
+    "category": "Jewelry"
   }
 ]

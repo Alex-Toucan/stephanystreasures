@@ -1,0 +1,13 @@
+  /* Fade animations */
+  .fade-card {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  .fade-card.hide {
+    opacity: 0;
+  }
+
+  /* Empty message styling */
+  #empty-message {
+    display: none;
+  }

@@ -39,6 +39,16 @@ export function saveCart(cart) {
   renderCartDropdown();
 }
 
+function flashSuccess(button, originalHTML) {
+  button.disabled = true;
+  button.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> Added!`;
+
+  setTimeout(() => {
+    button.disabled = false;
+    button.innerHTML = originalHTML;
+  }, 1200);
+}
+
 // Add item to cart
 export async function addToCart(id, quantity = 1) {
   await waitForProducts();
@@ -66,6 +76,9 @@ export async function addToCart(id, quantity = 1) {
   }
 
   saveCart(cart);
+
+  const btn = document.querySelector(`button[onclick="addToCart('${id}', 1)"]`);
+  if (btn) flashSuccess(btn, `<i class="bi bi-cart-plus me-2"></i> Add to Cart`);
 }
 
 // Update navbar badge
@@ -94,6 +107,9 @@ export async function instantCheckout(id) {
     alert("Product not found. Please try again.");
     return;
   }
+
+  const btn = document.querySelector(`button[onclick="instantCheckout('${id}')"]`);
+  if (btn) flashSuccess(btn, `<i class="bi bi-lightning-fill me-2"></i> Buy Now`);
 
   const items = [{ id, quantity: 1 }];
 

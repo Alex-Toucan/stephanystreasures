@@ -1,14 +1,45 @@
 ---
 import Card from './Card.astro';
 import products from '../../public/data/products.json';
+
+import '../styles/tabs.css';
+
+// Extract unique categories (force Antiques to exist)
+const categories = ["All", "Home Decor", "Jewelry", "Antiques"];
 ---
 
 <div class="px-0 my-5">
-  <div class="row g-4">
+
+  <!-- Category Pills -->
+  <ul class="nav nav-pills mb-4 justify-content-evenly gap-2" id="category-tabs">
+    {categories.map(cat => (
+      <li class="nav-item">
+        <button 
+          class={`nav-link ${cat === "All" ? "active" : ""}`} 
+          data-category={cat}
+        >
+          {cat}
+        </button>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Empty State Message -->
+  <div id="empty-message" class="text-center text-muted fs-5 my-4">
+    <i class="bi bi-emoji-frown-fill fs-1 mb-3"></i>
+    <p>No products found in this category.</p>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="row g-4" id="product-grid">
     {products.map(product => (
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div 
+        class="col-12 col-sm-6 col-md-4 col-lg-3 product-card fade-card" 
+        data-category={product.category}
+      >
         <Card product={product} />
       </div>
     ))}
   </div>
 </div>
+<script src="/scripts/tabs.js" is:inline></script>

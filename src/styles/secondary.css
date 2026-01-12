@@ -14,8 +14,17 @@ body,html {
   filter: drop-shadow(2px 4px 6px #19012E);
 }
 
+.fixed-top {
+  transition: padding 0.3s ease;
+}
+
+.fixed-top.navbar-scrolled {
+  padding-left: 3rem !important;  /* px-5 */
+  padding-right: 3rem !important; /* px-5 */
+}
+
 .link-hero {
-    font-size: 1.2rem !important;
+  font-size: 1.2rem !important;
 }
 
 .link-hero,[data-bs-theme=dark] .link-carousel {
