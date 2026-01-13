@@ -1,11 +1,12 @@
 :root {
   --bs-body-bg: #0f0f0f;
   --bs-body-color: #ffffff;
+  font-family: var(--font-body), sans-serif !important;
 }
 
 body,html {
-  padding-top: 56px;
-  scroll-padding-top: calc(56px + 1rem);
+  padding-top: 71px;
+  scroll-padding-top: calc(71px + 1rem);
 }
 
 .navbar {
@@ -58,12 +59,12 @@ body,html {
   font-size: calc(3rem + 4.5vw);
 }
 
-@media (max-width: 767.98px) {
-  .mx-mmd-4 {
+@media (max-width: 576px) {
+  .mx-ssm-4 {
     margin-left: 1.5rem !important;
     margin-right: 1.5rem !important;
   }
-  .px-mmd-4 {
+  .px-ssm-4 {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
   }
@@ -80,4 +81,36 @@ body,html {
 
 .card-hover:hover .hover-overlay {
   opacity: 1;
+}
+
+.category-pills .nav-link {
+  padding: 0.55rem 1.2rem;
+  border-radius: 50px;
+  background: #f8f9fa;
+  color: #444;
+  border: 1px solid #e2e2e2;
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+.category-pills .nav-link:hover {
+  background: #fff;
+  border-color: #d0d0d0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.category-pills .nav-link.active {
+  background: #ff69b4;
+  border-color: #ff69b4;
+  color: white;
+  box-shadow: 0 2px 8px rgba(255,105,180,0.4);
+}
+
+.navbar-logo {
+  filter: drop-shadow(2px 2px black);
+}
+
+.search-group input {
+  max-width: 300px;
+  width: 100%;
 }

@@ -1,35 +1,51 @@
-<div class="fixed-top my-4 px-mmd-4 px-0 container-md">
+<div class="fixed-top my-4 px-ssm-4 px-0 container-sm">
   <nav class="navbar shadow rounded-2">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">logo goes here</a>
-
+      <a class="navbar-brand" href="/">
+        <img src="/images/logo.png" alt="Stephany's Treasures Logo" class="navbar-logo" height="45px" />
+      </a>
       <div class="ms-auto">
-        <div class="dropdown">
-          <a
-            class="link-hero position-relative dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="bi bi-cart-fill fs-4"></i>
-            <span
-              id="cart-count"
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+        <div class="d-flex flex-wrap gap-4">
+           <a
+              class="link-hero"
+              href="/contact"
+              role="button"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Contact Us"
             >
-              0
-            </span>
-          </a>
+              <i class="bi bi-envelope-fill fs-4"></i>
+            </a>
+          <div class="dropdown">
+            <a
+              class="link-hero position-relative dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              data-bs-tooltip="tooltip"
+              data-bs-placement="bottom"
+              title="Shopping Cart"
+            >
+              <i class="bi bi-cart-fill fs-4"></i>
+              <span
+                id="cart-count"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+              >
+                0
+              </span>
+            </a>
 
-          <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
-            <div id="cart-dropdown-content">
-              <p class="text-center text-muted mb-0">Cart is empty</p>
-            </div>
-            <div class="dropdown-divider"></div>
-            <button id="dropdown-checkout" class="btn btn-success w-100">
-              Checkout
-            </button>
-          </ul>
+            <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
+              <div id="cart-dropdown-content">
+                <p class="text-center text-muted mb-0">Cart is empty</p>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button id="dropdown-checkout" class="btn btn-success w-100">
+                Checkout
+              </button>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -37,3 +53,4 @@
 </div>
 
 <script src="/scripts/navbar.js" is:inline></script>
+<script src="/scripts/enabler.js" is:inline></script>

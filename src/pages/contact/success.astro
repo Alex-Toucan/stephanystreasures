@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Message Sent"
+  description="Your message has been delivered successfully."
+  keywords="contact, success, confirmation"
+  author="Stephanie's Treasures"
+  color="#ff69b4"
+>
+  <main id="success-page">
+    <div class="text-center mb-4 rounded-2 hero shadow">
+      <div class="hero-back rounded-2 py-5">
+        <i class="bi bi-check-circle-fill text-success fs-1"></i>
+        <h1 class="title fw-light lh-1 mt-3">Thank You!</h1>
+        <p class="fs-5 m-3 mb-0 text-body-secondary">
+          Your message has been sent successfully.
+        </p>
+      </div>
+    </div>
+
+    <div class="container text-center my-5">
+      <a href="/" class="btn btn-primary btn-lg">
+        Return Home
+        <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+
+      <hr class="mx-2 mt-5">
+
+      <p class="figure-caption">
+        We’ll review your message and get back to you soon.
+        Please allow time for a response.
+      </p>
+    </div>
+  </main>
+</Layout>
