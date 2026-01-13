@@ -1,7 +1,6 @@
 :root {
   --bs-body-bg: #0f0f0f;
   --bs-body-color: #ffffff;
-  font-family: var(--font-body), sans-serif !important;
 }
 
 body,html {

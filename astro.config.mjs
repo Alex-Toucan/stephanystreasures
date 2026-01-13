@@ -11,11 +11,6 @@ export default defineConfig({
         provider: fontProviders.google(),
         name: "Imperial Script",
         cssVariable: "--font-title"
-      },
-      {
-        provider: fontProviders.google(),
-        name: "Geist",
-        cssVariable: "--font-body"
       }
     ],
   },
