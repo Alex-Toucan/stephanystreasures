@@ -108,8 +108,3 @@ body,html {
 .navbar-logo {
   filter: drop-shadow(2px 2px black);
 }
-
-.search-group input {
-  max-width: 300px;
-  width: 100%;
-}
