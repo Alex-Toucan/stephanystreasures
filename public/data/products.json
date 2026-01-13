@@ -1,59 +1,5 @@
 [
   {
-    "id": "aromatherapy-shower-bombs",
-    "name": "Aromatherapy Shower Bombs",
-    "price": 2299,
-    "type": "one-time",
-    "image": "/images/product1.jpg",
-    "soldOut": true,
-    "category": "Home Decor"
-  },
-  {
-    "id": "dish-soap-bar-bergamot-tangerine",
-    "name": "Dish Soap Bar-Bergamot & Tangerine",
-    "price": 800,
-    "type": "one-time",
-    "image": "/images/product2.jpg",
-    "soldOut": true,
-    "category": "Home Decor"
-  },
-  {
-    "id": "dish-soap-bar-lemon-clean",
-    "name": "Dish Soap Bar-Lemon Clean",
-    "price": 800,
-    "type": "one-time",
-    "image": "/images/product3.jpg",
-    "soldOut": true,
-    "category": "Home Decor"
-  },
-  {
-    "id": "dish-soap-bar-peppermint-eucalyptus",
-    "name": "Dish Soap Bar-Peppermint Eucalyptus",
-    "price": 800,
-    "type": "one-time",
-    "image": "/images/product4.jpg",
-    "soldOut": true,
-    "category": "Home Decor"
-  },
-  {
-    "id": "double-green-cabochon-wire-wrapped-necklace",
-    "name": "Double Green Cabochon Wire Wrapped Necklace",
-    "price": 2000,
-    "type": "one-time",
-    "image": "/images/product5.jpg",
-    "soldOut": true,
-    "category": "Jewelry"
-  },
-  {
-    "id": "lotion-candle-love-spell",
-    "name": "Lotion Candle-Love Spell",
-    "price": 1200,
-    "type": "one-time",
-    "image": "/images/product6.jpg",
-    "soldOut": true,
-    "category": "Home Decor"
-  },
-  {
     "id": "magnesium-spray-emert-farms",
     "name": "Magnesium Spray-Emert Farms",
     "price": 950,
@@ -70,5 +16,14 @@
     "image": "/images/product8.jpg",
     "soldOut": false,
     "category": "Jewelry"
+  },
+  {
+    "id": "limoges-heart-trinket-box",
+    "name": "Limoges Heart Trinket Box",
+    "price": 6500,
+    "type": "one-time",
+    "image": "/images/limoges.jpg",
+    "soldOut": false,
+    "category": "Antiques"
   }
 ]
