@@ -13,24 +13,14 @@ import { Font } from 'astro:assets';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-const { title, heroid, icon, color, description, keywords, author, additionalContent } = Astro.props;
+const { title, icon, color, description, keywords, author, additionalContent } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html class="fixedtopnavimage" lang="en" data-bs-theme="dark">
   <head>
       <title>{title}</title> 
-      <script is:inline src="/scripts/darkmode.js"></script>
       <script is:inline src="/scripts/navbar.js"></script>
-      {heroid ?
-        <Fragment>
-        <link rel="preload" as="image" href={`/media/images/hero-${heroid}.webp`}>
-        </Fragment>
-        :
-        <Fragment>
-        <link rel="preload" as="image" href={`/media/images/hero.webp`}>
-        </Fragment>
-      }
       {icon ?
         <Fragment>
           <link rel="icon" href={`/media/images/${icon}`}>
