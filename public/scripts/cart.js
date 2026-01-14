@@ -1,5 +1,3 @@
-console.log("CART.JS LOADED");
-
 // Load product data at runtime (browser-safe)
 let products = [];
 let productsReady = false;
