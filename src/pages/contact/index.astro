@@ -2,11 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 
 export const prerender = true;
-export const trailingSlash = 'ignore';
-export const hydrate = false;
-export const client = 'none';
+export const ssr = false;
 ---
-
 
 <Layout 
   title="Contact Us" 
@@ -26,7 +23,7 @@ export const client = 'none';
     <form 
       name="Contact Form"
       method="POST"
-      action="/success"
+      action="/contact/success"
       data-netlify-honeypot="bot-field"
       enctype="multipart/form-data"
       class="mx-auto p-4 border rounded-3 shadow-sm"
@@ -75,6 +72,19 @@ export const client = 'none';
         <label for="message">Message</label>
       </div>
 
+      <!-- File Upload (cannot float, styled to match) -->
+      <div class="mb-4">
+        <label for="attachment" class="form-label small text-muted">
+          Attach an Image (optional)
+        </label>
+        <input 
+          type="file" 
+          id="attachment" 
+          name="file" 
+          class="form-control"
+          accept="image/*"
+        >
+      </div>
 
       <!-- Submit -->
       <div class="text-center">
