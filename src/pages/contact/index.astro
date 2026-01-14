@@ -2,7 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 
 export const prerender = true;
+export const trailingSlash = 'ignore';
+export const hydrate = false;
+export const client = 'none';
 ---
+
 
 <Layout 
   title="Contact Us" 
@@ -71,19 +75,6 @@ export const prerender = true;
         <label for="message">Message</label>
       </div>
 
-      <!-- File Upload (cannot float, styled to match) -->
-      <div class="mb-4">
-        <label for="attachment" class="form-label small text-muted">
-          Attach an Image (optional)
-        </label>
-        <input 
-          type="file" 
-          id="attachment" 
-          name="file" 
-          class="form-control"
-          accept="image/*"
-        >
-      </div>
 
       <!-- Submit -->
       <div class="text-center">
