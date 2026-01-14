@@ -1,12 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+export const prerender = true;
+export const ssr = false;
 ---
 
 <Layout 
   title="Message Sent"
   description="Your message has been delivered successfully."
   keywords="contact, success, confirmation"
-  author="Stephanie's Treasures"
+  author="Stephany's Treasures"
   color="#ff69b4"
 >
   <main id="success-page">
