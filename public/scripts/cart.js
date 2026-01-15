@@ -37,9 +37,10 @@ export function saveCart(cart) {
   renderCartDropdown();
 }
 
-function flashSuccess(button, originalHTML) {
+// Flash success with custom text
+function flashSuccess(button, originalHTML, successText) {
   button.disabled = true;
-  button.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> Added!`;
+  button.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ${successText}`;
 
   setTimeout(() => {
     button.disabled = false;
@@ -76,7 +77,13 @@ export async function addToCart(id, quantity = 1) {
   saveCart(cart);
 
   const btn = document.querySelector(`button[onclick="addToCart('${id}', 1)"]`);
-  if (btn) flashSuccess(btn, `<i class="bi bi-cart-plus me-2"></i> Add to Cart`);
+  if (btn) {
+    flashSuccess(
+      btn,
+      `<i class="bi bi-cart-plus me-2"></i> Add to Cart`,
+      "Added to Cart!"
+    );
+  }
 }
 
 // Update navbar badge
@@ -107,7 +114,13 @@ export async function instantCheckout(id) {
   }
 
   const btn = document.querySelector(`button[onclick="instantCheckout('${id}')"]`);
-  if (btn) flashSuccess(btn, `<i class="bi bi-lightning-fill me-2"></i> Buy Now`);
+  if (btn) {
+    flashSuccess(
+      btn,
+      `<i class="bi bi-lightning-fill me-2"></i> Buy Now`,
+      "Redirecting…"
+    );
+  }
 
   const items = [{ id, quantity: 1 }];
 
@@ -138,10 +151,15 @@ export function renderCartDropdown() {
   const container = document.getElementById("cart-dropdown-content");
   if (!container) return;
 
+  const checkoutBtn = document.getElementById("dropdown-checkout");
+
   if (cart.length === 0) {
     container.innerHTML = `<p class="text-center text-muted mb-0">Cart is empty</p>`;
+    if (checkoutBtn) checkoutBtn.classList.add("d-none");
     return;
   }
+
+  if (checkoutBtn) checkoutBtn.classList.remove("d-none");
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -230,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const checkoutBtn = document.getElementById("dropdown-checkout");
   if (checkoutBtn) {
+    checkoutBtn.innerHTML = `Checkout <i class="bi bi-box-arrow-up-right ms-2"></i>`;
     checkoutBtn.addEventListener("click", async () => {
       const cart = getCart();
 
