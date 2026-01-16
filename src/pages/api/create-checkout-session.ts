@@ -24,36 +24,30 @@ export const POST: APIRoute = async ({ request }) => {
 
       const quantity = cartItem.quantity ?? 1;
 
-      // ONE-TIME PRODUCTS ONLY
       lineItems.push({
         price_data: {
           currency: "usd",
-          product_data: { name: product.name },
+          product_data: {
+            name: product.name,
+            tax_code: "txcd_20060000"
+          },
           unit_amount: product.price
         },
         quantity
       });
     }
 
-    // Create checkout session
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
-
-      // Collect billing address
       billing_address_collection: "required",
-
-      // Collect shipping address (US only)
       shipping_address_collection: {
         allowed_countries: ["US"]
       },
-
       customer_creation: "always",
       line_items: lineItems,
-
       allow_promotion_codes: true,
       automatic_tax: { enabled: true },
-
       success_url: "https://stephanystreasures.com/success",
       cancel_url: "https://stephanystreasures.com/cancel"
     });
