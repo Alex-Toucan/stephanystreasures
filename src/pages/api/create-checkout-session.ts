@@ -51,6 +51,9 @@ export const POST: APIRoute = async ({ request }) => {
       customer_creation: "always",
       line_items: lineItems,
 
+      allow_promotion_codes: true,
+      automatic_tax: { enabled: true },
+
       success_url: "https://stephanystreasures.com/success",
       cancel_url: "https://stephanystreasures.com/cancel"
     });
