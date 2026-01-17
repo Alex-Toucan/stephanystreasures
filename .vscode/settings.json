@@ -1,0 +1,11 @@
+{
+  "files.watcherExclude": {
+    "**/.netlify/**": true
+  },
+  "files.exclude": {
+    "**/.netlify/**": true
+  },
+  "search.exclude": {
+    "**/.netlify/**": true
+  }
+}
