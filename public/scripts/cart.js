@@ -152,14 +152,17 @@ export function renderCartDropdown() {
   if (!container) return;
 
   const checkoutBtn = document.getElementById("dropdown-checkout");
+  const divider = document.querySelector(".dropdown-divider");
 
   if (cart.length === 0) {
     container.innerHTML = `<p class="text-center text-muted mb-0">Cart is empty</p>`;
     if (checkoutBtn) checkoutBtn.classList.add("d-none");
+    if (divider) divider.classList.add("d-none");
     return;
   }
 
   if (checkoutBtn) checkoutBtn.classList.remove("d-none");
+  if (divider) divider.classList.remove("d-none");
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -256,7 +259,9 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = `<p class="text-center text-muted mb-0">Cart is empty</p>`;
 
         const checkoutBtn = document.getElementById("dropdown-checkout");
+        const divider = document.querySelector(".dropdown-divider");
         if (checkoutBtn) checkoutBtn.classList.add("d-none");
+        if (divider) divider.classList.add("d-none");
 
         return;
       }

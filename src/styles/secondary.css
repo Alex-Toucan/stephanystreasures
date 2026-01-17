@@ -69,6 +69,12 @@ body,html {
   }
 }
 
+@media (min-width: 767.98px) {
+  .position-md-absolute {
+    position: absolute !important;
+  }
+}
+
 .card-hover .hover-overlay {
   position: absolute;
   inset: 0;
@@ -108,3 +114,4 @@ body,html {
 .navbar-logo {
   filter: drop-shadow(2px 2px black);
 }
+

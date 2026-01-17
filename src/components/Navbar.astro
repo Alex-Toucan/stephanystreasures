@@ -17,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
         <div class="ms-auto">
-          <div class="d-flex flex-wrap gap-2 gap-md-4 flex-column flex-md-row align-items-end">
+          <div class="d-flex flex-column flex-md-row align-items-start align-items-md-end gap-3 gap-md-4 mt-3 mt-md-0">
             <a
               class="link-hero"
               href="https://www.ebay.com/usr/stes_do_lslcekm"
@@ -27,7 +27,9 @@
               title="eBay Store <i class='bi bi-box-arrow-up-right ms-1'></i>"
               data-bs-html="true"
             >
-              <i class="bi bi-shop fs-4"></i>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-shop fs-4"></i><small class="ms-2 d-md-none">eBay <i class="bi bi-box-arrow-up-right ms-2"></i></small>
+              </div>
             </a>
             <a
               class="link-hero"
@@ -37,29 +39,35 @@
               data-bs-placement="bottom"
               title="Contact Us"
             >
-              <i class="bi bi-envelope-fill fs-4"></i>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-envelope-fill fs-4"></i><small class="ms-2 d-md-none">Contact</small>
+              </div>
             </a>
-            <div class="dropdown">
+            <div class="dropdown w-100 w-md-auto">
               <a
-                class="link-hero position-relative dropdown-toggle"
+                class="link-hero dropdown-toggle d-flex align-items-center w-100"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                data-bs-tooltip="tooltip"
-                data-bs-placement="bottom"
-                title="Shopping Cart"
               >
-                <i class="bi bi-cart-fill fs-4"></i>
-                <span
-                  id="cart-count"
-                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
-                >
-                  0
+                <span class="d-flex align-items-center me-2 position-relative">
+                  <i class="bi bi-cart-fill fs-4"></i>
+                  <small class="ms-2 d-md-none">Cart</small>
+
+                  <span
+                    id="cart-count"
+                    class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger d-none"
+                  >
+                    0
+                  </span>
                 </span>
               </a>
 
-              <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
+              <ul
+                class="dropdown-menu dropdown-menu-end p-3 position-static position-md-absolute w-100 w-md-auto mt-3"
+                style="min-width: 300px;"
+              >
                 <div id="cart-dropdown-content">
                   <p class="text-center text-muted mb-0">Cart is empty</p>
                 </div>
