@@ -3,11 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const twoPointFiveRem =
     parseFloat(getComputedStyle(document.documentElement).fontSize) * 2.5;
 
-  window.addEventListener("scroll", () => {
+  const applyScrollState = () => {
     if (window.scrollY > twoPointFiveRem) {
       navWrapper.classList.add("navbar-scrolled");
     } else {
       navWrapper.classList.remove("navbar-scrolled");
     }
-  });
+  };
+
+  applyScrollState();
+  window.addEventListener("scroll", applyScrollState);
 });
