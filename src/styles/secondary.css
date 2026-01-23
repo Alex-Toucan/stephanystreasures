@@ -69,9 +69,17 @@ body,html {
   }
 }
 
+.cart {
+  left: 40% !important;
+  top: 10% !important;
+}
+
 @media (min-width: 767.98px) {
   .position-md-absolute {
     position: absolute !important;
+  }
+  .cart {
+    left: 100% !important;
   }
 }
 
