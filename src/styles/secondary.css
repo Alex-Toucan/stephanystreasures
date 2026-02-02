@@ -23,6 +23,19 @@ body,html {
   padding-right: 3rem !important; /* px-5 */
 }
 
+@media (min-width: 767.98px) {
+  .shop-dropdown {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .shop-dropdown {
+    overflow-y: auto;
+    max-height: 300px;
+  }
+}
+
 .link-hero {
   font-size: 1.2rem !important;
 }
