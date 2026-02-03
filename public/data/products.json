@@ -6,7 +6,8 @@
     "type": "one-time",
     "image": "/images/product7.jpg",
     "soldOut": false,
-    "category": "Home Decor"
+    "category": "Home Decor",
+    "quantity": 1
   },
   {
     "id": "wire-wrapped-pineapple-stone-necklace",
@@ -15,7 +16,8 @@
     "type": "one-time",
     "image": "/images/product8.jpg",
     "soldOut": false,
-    "category": "Jewelry"
+    "category": "Jewelry",
+    "quantity": 1
   },
   {
     "id": "limoges-heart-trinket-box",
@@ -24,6 +26,7 @@
     "type": "one-time",
     "image": "/images/limoges.jpg",
     "soldOut": false,
-    "category": "Antiques"
+    "category": "Antiques",
+    "quantity": 1
   }
 ]

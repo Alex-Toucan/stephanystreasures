@@ -36,6 +36,24 @@ body,html {
   }
 }
 
+.overlay-cart-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.4rem;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.overlay-cart-btn:hover {
+  background: rgba(0,0,0,0.75);
+  transform: scale(1.1);
+}
+
 .link-hero {
   font-size: 1.2rem !important;
 }

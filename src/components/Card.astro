@@ -27,6 +27,15 @@ const { product } = Astro.props;
       <!-- Hover Overlay -->
       <div class="hover-overlay d-flex justify-content-center align-items-center">
         <span class="text-white fw-semibold">View Item</span>
+
+        <!-- Add-to-cart icon -->
+        <button 
+          type="button"
+          class="overlay-cart-btn"
+          onclick={`event.stopPropagation(); event.preventDefault(); overlayAddToCart('${product.id}')`}
+        >
+          <i class="bi bi-cart-plus"></i>
+        </button>
       </div>
     </div>
 

@@ -1,4 +1,3 @@
-// Load product data at runtime (browser-safe)
 let products = [];
 let productsReady = false;
 
@@ -8,13 +7,10 @@ fetch("/data/products.json")
     products = data;
     productsReady = true;
   })
-  .catch(err => {
-    console.error("Failed to load product data:", err);
-  });
+  .catch(err => console.error("Failed to load product data:", err));
 
-// Wait until products are loaded
 function waitForProducts() {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (productsReady) return resolve();
     const interval = setInterval(() => {
       if (productsReady) {
@@ -25,68 +21,98 @@ function waitForProducts() {
   });
 }
 
-// Load cart from localStorage
 export function getCart() {
   return JSON.parse(localStorage.getItem("cart") || "[]");
 }
 
-// Save cart
 export function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartBadge();
   renderCartDropdown();
 }
 
-// Flash success with custom text
-function flashSuccess(button, originalHTML, successText) {
+function flashState(button, tempHTML, restoreHTML) {
   button.disabled = true;
-  button.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ${successText}`;
-
+  button.innerHTML = tempHTML;
   setTimeout(() => {
     button.disabled = false;
-    button.innerHTML = originalHTML;
+    button.innerHTML = restoreHTML;
   }, 1200);
 }
 
-// Add item to cart
 export async function addToCart(id, quantity = 1) {
   await waitForProducts();
 
   const cart = getCart();
-  const existing = cart.find((item) => item.id === id);
-  const product = products.find((p) => p.id === id);
+  const existing = cart.find(item => item.id === id);
+  const product = products.find(p => p.id === id);
 
   if (!product) {
-    console.error("Invalid product ID:", id);
-    alert("Product not found. Please try again.");
+    alert("Product not found.");
     return;
   }
 
+  const maxQty = product.quantity || 1;
+  const btn = document.querySelector(`button[onclick="addToCart('${id}', 1)"]`);
+  const originalHTML = `<i class="bi bi-cart-plus me-2"></i> Add to Cart`;
+
   if (existing) {
-    existing.quantity += quantity;
-  } else {
-    cart.push({
-      id,
-      quantity,
-      name: product.name || "Unnamed Product",
-      image: product.image || "/media/placeholder.png",
-      price: product.price || 0
-    });
+    if (btn) {
+      flashState(
+        btn,
+        `<i class="bi bi-x-circle-fill me-2 text-danger"></i> Already in Cart`,
+        originalHTML
+      );
+    }
+    existing.quantity = maxQty;
+    saveCart(cart);
+    return;
   }
+
+  cart.push({
+    id,
+    quantity: maxQty,
+    name: product.name || "Unnamed Product",
+    image: product.image || "/media/placeholder.png",
+    price: product.price || 0
+  });
 
   saveCart(cart);
 
-  const btn = document.querySelector(`button[onclick="addToCart('${id}', 1)"]`);
   if (btn) {
-    flashSuccess(
+    flashState(
       btn,
-      `<i class="bi bi-cart-plus me-2"></i> Add to Cart`,
-      "Added to Cart!"
+      `<i class="bi bi-check-circle-fill me-2 text-success"></i> Added to Cart!`,
+      originalHTML
     );
   }
 }
 
-// Update navbar badge
+export async function overlayAddToCart(id) {
+  await waitForProducts();
+
+  const cart = getCart();
+  const existing = cart.find(item => item.id === id);
+  const icon = document.querySelector(`.overlay-cart-btn[onclick*="${id}"] i`);
+
+  if (existing) {
+    if (icon) {
+      const original = icon.className;
+      icon.className = "bi bi-x-circle-fill text-danger";
+      setTimeout(() => (icon.className = original), 900);
+    }
+    return;
+  }
+
+  await addToCart(id, 1);
+
+  if (icon) {
+    const original = icon.className;
+    icon.className = "bi bi-check-circle-fill text-success";
+    setTimeout(() => (icon.className = original), 900);
+  }
+}
+
 export function updateCartBadge() {
   const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -102,23 +128,21 @@ export function updateCartBadge() {
   }
 }
 
-// Instant checkout (bypass cart)
 export async function instantCheckout(id) {
   await waitForProducts();
 
-  const product = products.find((p) => p.id === id);
+  const product = products.find(p => p.id === id);
   if (!product) {
-    console.error("Invalid product ID:", id);
-    alert("Product not found. Please try again.");
+    alert("Product not found.");
     return;
   }
 
   const btn = document.querySelector(`button[onclick="instantCheckout('${id}')"]`);
   if (btn) {
-    flashSuccess(
+    flashState(
       btn,
-      `<i class="bi bi-lightning-fill me-2"></i> Buy Now`,
-      "Redirecting…"
+      `<i class="bi bi-lightning-fill me-2"></i> Redirecting…`,
+      `<i class="bi bi-lightning-fill me-2"></i> Buy Now`
     );
   }
 
@@ -131,13 +155,7 @@ export async function instantCheckout(id) {
   });
 
   const data = await res.json();
-
-  if (data.url) {
-    window.location = data.url;
-  } else {
-    console.error("Checkout error:", data);
-    alert("Unable to start checkout.");
-  }
+  if (data.url) window.location = data.url;
 }
 
 export function removeFromCart(id) {
@@ -145,7 +163,6 @@ export function removeFromCart(id) {
   saveCart(cart);
 }
 
-// Render dropdown contents
 export function renderCartDropdown() {
   const cart = getCart();
   const container = document.getElementById("cart-dropdown-content");
@@ -169,27 +186,14 @@ export function renderCartDropdown() {
   container.innerHTML =
     cart
       .map(
-        (item) => `
+        item => `
         <div class="d-flex align-items-center mb-2">
-          <div 
-            class="rounded me-2"
-            style="
-              width: 40px;
-              height: 40px;
-              min-width: 40px;
-              min-height: 40px;
-              overflow: hidden;
-            "
-          >
-            <img 
-              src="${item.image || "/media/placeholder.png"}"
-              alt="${item.name || "Product"}"
-              style="width: 100%; height: 100%; object-fit: cover;"
-            >
+          <div class="rounded me-2" style="width:40px;height:40px;object-fit:cover;">
+            <img src="${item.image}" alt="${item.name}" class="rounded" style="width:40px;height:40px;object-fit:cover;">
           </div>
-          
+
           <div class="flex-grow-1">
-            <div class="fw-semibold">${item.name || "Unnamed Product"}</div>
+            <div class="fw-semibold">${item.name}</div>
             <small class="text-muted">Qty: ${item.quantity}</small>
           </div>
 
@@ -211,7 +215,6 @@ export function renderCartDropdown() {
     `;
 }
 
-// Disable buttons on product page if sold out
 async function applySoldOutState() {
   await waitForProducts();
 
@@ -221,29 +224,26 @@ async function applySoldOutState() {
 
   const productId = match[1];
   const product = products.find(p => p.id === productId);
-  if (!product) return;
+  if (!product || !product.soldOut) return;
 
-  if (product.soldOut) {
-    const addBtn = document.querySelector("button[onclick^=\"addToCart\"]");
-    const buyBtn = document.querySelector("button[onclick^=\"instantCheckout\"]");
+  const addBtn = document.querySelector("button[onclick^=\"addToCart\"]");
+  const buyBtn = document.querySelector("button[onclick^=\"instantCheckout\"]");
 
-    if (addBtn) {
-      addBtn.disabled = true;
-      addBtn.classList.add("btn-secondary");
-      addBtn.classList.remove("btn-primary");
-      addBtn.innerHTML = `<i class="bi bi-x-circle me-2"></i> Sold Out`;
-    }
+  if (addBtn) {
+    addBtn.disabled = true;
+    addBtn.classList.add("btn-secondary");
+    addBtn.classList.remove("btn-primary");
+    addBtn.innerHTML = `<i class="bi bi-x-circle me-2"></i> Sold Out`;
+  }
 
-    if (buyBtn) {
-      buyBtn.disabled = true;
-      buyBtn.classList.add("btn-secondary");
-      buyBtn.classList.remove("btn-success");
-      buyBtn.innerHTML = `<i class="bi bi-x-circle me-2"></i> Unavailable`;
-    }
+  if (buyBtn) {
+    buyBtn.disabled = true;
+    buyBtn.classList.add("btn-secondary");
+    buyBtn.classList.remove("btn-success");
+    buyBtn.innerHTML = `<i class="bi bi-x-circle me-2"></i> Unavailable`;
   }
 }
 
-// Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
   updateCartBadge();
   renderCartDropdown();
@@ -254,18 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
     checkoutBtn.innerHTML = `Checkout <i class="bi bi-box-arrow-up-right ms-2"></i>`;
     checkoutBtn.addEventListener("click", async () => {
       const cart = getCart();
-
-      if (cart.length === 0) {
-        container.innerHTML = `<p class="text-center text-muted mb-0">Cart is empty</p>`;
-
-        const checkoutBtn = document.getElementById("dropdown-checkout");
-        const divider = document.querySelector(".dropdown-divider");
-        if (checkoutBtn) checkoutBtn.classList.add("d-none");
-        if (divider) divider.classList.add("d-none");
-
-        return;
-      }
-
+      if (cart.length === 0) return;
 
       const res = await fetch("/api/create-checkout-session", {
         method: "POST",
@@ -279,8 +268,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Expose functions globally
 window.addToCart = addToCart;
 window.instantCheckout = instantCheckout;
 window.updateCartBadge = updateCartBadge;
 window.removeFromCart = removeFromCart;
+window.overlayAddToCart = overlayAddToCart;
