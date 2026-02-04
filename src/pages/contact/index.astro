@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 
 export const prerender = true;
 export const ssr = false;
+
+import '../../styles/contact.css'
 ---
 
 <Layout 
@@ -11,6 +13,7 @@ export const ssr = false;
   keywords="contact, Stephany's Treasures"
   author="Stephany's Treasures"
   color="#ff69b4"
+  contact="true"
 >
   <main class="container mb-5">
 
@@ -72,17 +75,25 @@ export const ssr = false;
         <label for="message">Message</label>
       </div>
 
-      <!-- File Upload (cannot float, styled to match) -->
       <div class="mb-4">
-        <label for="attachment" class="form-label small text-muted">
-          Attach an Image (optional)
+        <label 
+          for="attachment" 
+          id="attachment-label"
+          tabindex="0"
+          class="form-control file-box d-flex justify-content-between align-items-center small"
+        >
+          <span class="text-muted">Attach a File (optional)</span>
+          <span id="attachment-filename" class="text-end text-break">Select a File</span>
         </label>
+        <div id="attachment-feedback" class="invalid-feedback d-none">
+          File must be 10MB or smaller.
+        </div>
         <input 
           type="file" 
           id="attachment" 
           name="file" 
-          class="form-control"
-          accept="image/*"
+          class="d-none"
+          accept="image/*,video/*,audio/*"
         >
       </div>
 
