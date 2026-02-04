@@ -26,6 +26,9 @@ body,html {
 @media (min-width: 767.98px) {
   .shop-dropdown {
     min-width: 300px;
+    right: -1.2rem !important;
+    top: 3rem !important;
+    left: auto !important;
   }
 }
 
