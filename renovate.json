@@ -2,5 +2,65 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Astro packages",
+      "rangeStrategy": "bump",
+      "matchPackageNames": [
+        "/^astro/",
+        "/^@astrojs/"
+      ]
+    },
+    {
+      "groupName": "Stripe packages",
+      "rangeStrategy": "bump",
+      "matchPackageNames": [
+        "/^stripe/"
+      ]
+    },
+    {
+      "groupName": "Bootstrap packages",
+      "rangeStrategy": "bump",
+      "matchPackageNames": [
+        "/^bootstrap/",
+        "/^bootstrap-icons/"
+      ]
+    },
+    {
+      "groupName": "jQuery packages",
+      "rangeStrategy": "bump",
+      "matchPackageNames": [
+        "/^jquery/",
+        "/^@types/jquery/"
+      ]
+    },
+    {
+      "groupName": "Requirements.txt dependencies",
+      "matchManagers": [
+        "pip_requirements"
+      ],
+      "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "Other dependencies",
+      "matchPackageNames": [
+        "*",
+        "!/^react/",
+        "!/^@types/react/",
+        "!/^react-dom/",
+        "!/^astro/",
+        "!/^@astrojs/",
+        "!/^bootstrap/",
+        "!/^bootstrap-icons/",
+        "!/^jquery/",
+        "!/^@types/jquery/"
+      ],
+      "rangeStrategy": "bump"
+    }
+  ],
+  "commitMessageSuffix": "[skip netlify]"
 }
